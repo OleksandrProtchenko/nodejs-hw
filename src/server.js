@@ -1,6 +1,6 @@
 import express from 'express';
 import cors from 'cors';
-import pino from 'pino';
+import pino from 'pino-http';
 import 'dotenv/config';
 
 const app = express();
@@ -25,7 +25,7 @@ app.use(
   }),
 );
 
-app.get('/test-error', () => {
+app.get('/test-error', (req, res) => {
   throw new Error('Simulated server error');
 });
 
